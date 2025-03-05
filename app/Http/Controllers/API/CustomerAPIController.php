@@ -48,7 +48,7 @@ class CustomerAPIController extends Controller
             $customer->cv_path = $cvPath;
         }
 
-        $customer->update($request->only('name', 'email', 'phone', 'cv_path'));
+        $customer->update($request->only('name', 'email', 'phone'));
 
         return response()->json([
             'message' => 'Customer updated successfully',
