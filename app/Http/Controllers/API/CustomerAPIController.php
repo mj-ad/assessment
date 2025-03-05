@@ -35,14 +35,14 @@ class CustomerAPIController extends Controller
             return response()->json(['message' => 'Customer not found'], 404);
         }
 
-        if ($request->hasFile('cv')) {
+        if ($request->hasFile('cv_path')) {
             // Delete the old CV file if it exists
             if ($customer->cv_path) {
                 Storage::disk('public')->delete($customer->cv_path);
             }
 
             // Store the new CV file
-            $cvPath = $request->file('cv')->store('cvs', 'public');
+            $cvPath = $request->file('cv_path')->store('cvs', 'public');
             $customer->cv_path = $cvPath;
         }
 
@@ -58,8 +58,8 @@ class CustomerAPIController extends Controller
     {
         // Handle file upload
         $cvPath = null;
-        if ($request->hasFile('cv')) {
-            $cvPath = $request->file('cv')->store('cvs', 'public'); // Store in 'storage/app/public/cvs'
+        if ($request->hasFile('cv_path')) {
+            $cvPath = $request->file('cv_path')->store('cvs', 'public'); // Store in 'storage/app/public/cvs'
         }
 
         $customer = Customer::create([
