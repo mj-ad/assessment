@@ -29,6 +29,8 @@ class CustomerAPIController extends Controller
 
     public function update(UpdateCustomerRequest $request, $customer_no)
     {
+        \Log::info('Request Data:', $request->all());
+
         $customer = Customer::where('id', $customer_no)->first();
 
         if (!$customer) {
