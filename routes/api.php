@@ -13,6 +13,7 @@ Route::get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/customers/{customer_no}', [CustomerAPIController::class, 'show']);
+    Route::get('/customers', [CustomerAPIController::class, 'all']);
     Route::put('/customers/{customer_no}', [CustomerAPIController::class, 'update']);
     Route::post('/customers', [CustomerAPIController::class, 'store']);
 });

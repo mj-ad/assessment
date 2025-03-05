@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Storage;
 
 class CustomerAPIController extends Controller
 {
+    public function all()
+    {
+        $customers = Customer::all();
+        return response()->json($customers);
+    }
     public function show($customer_no)
     {
         $customer = Customer::where('id', $customer_no)->first();
